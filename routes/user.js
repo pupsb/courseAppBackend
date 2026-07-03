@@ -2,17 +2,17 @@ import { Router } from "express";
 
 const userRouter = Router();
 
-userRouter.post("/user/signup", function (req, res) {
+userRouter.post("/signup", function (req, res) {
   res.json({
     message: "signup endpoint",
   });
 });
-userRouter.post("/user/login", function(req,res) {
+userRouter.post("/login", function(req,res) {
     res.json({
-        message: "signup endpoint"
+        message: "login endpoint"
     })
 })
-userRouter.get("/user/purchases", function(req,res) {
+userRouter.get("/purchases", function(req,res) {
     res.json({
         message: "purchases endpoint"
     })

@@ -10,7 +10,7 @@ courseRouter.get("/preview", function(req,res) {
 
 courseRouter.post("/purchase", function(req,res) {
     res.json({
-        message: "signup endpoint"
+        message: "purchase endpoint"
     })
 })
 
