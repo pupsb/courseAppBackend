@@ -1,8 +1,9 @@
 import { Router } from "express";
 
 
-import { adminModel } from "../db.js";
+import { adminModel, courseModel } from "../db.js";
 import jwt from "jsonwebtoken";
+import { adminMiddleware } from "../middleware/admin.js";
 const JWT_ADMINSECRET = process.env.JWT_ADMINSECRET;
 
 
@@ -57,9 +58,19 @@ adminRouter.get("/purchases", function (req, res) {
   });
 });
 
-adminRouter.post("/course", function (req, res) {
+adminRouter.post("/course",adminMiddleware, async function (req, res) {
+  const adminId= req.adminId;
+  const {title,description,imageUrl,price}= req.body;
+  const course = await courseModel.create({
+    title,
+    description,
+    imageUrl,
+    price,
+    creatorId: adminId
+  })
   res.json({
     message: "course creation endpoint",
+    courseId: course._id
   });
 });
 
