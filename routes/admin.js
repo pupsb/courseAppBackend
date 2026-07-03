@@ -59,7 +59,7 @@ adminRouter.get("/purchases", function (req, res) {
 });
 
 adminRouter.post("/course",adminMiddleware, async function (req, res) {
-  const adminId= req.adminId;
+  const adminId= req.userId;
   const {title,description,imageUrl,price}= req.body;
   const course = await courseModel.create({
     title,
@@ -74,15 +74,26 @@ adminRouter.post("/course",adminMiddleware, async function (req, res) {
   });
 });
 
-adminRouter.put("/course", function (req, res) {
+adminRouter.put("/course",adminMiddleware, async function (req, res) {
+  const {courseId,title,description,imageUrl,price} = req.body;
+  const updatedCourse = await courseModel.findByIdAndUpdate(courseId,{
+    title,
+    description,
+    imageUrl,
+    price
+  },{new:true});
+
   res.json({
     message: "course update endpoint",
+    updatedCourse
   });
 });
 
-adminRouter.get("/course/bulk", function (req, res) {
+adminRouter.get("/course/bulk",adminMiddleware, async function (req, res) {
+  const courses = await courseModel.find({});
   res.json({
     message: "course bulk retrieval endpoint",
+    courses
   });
 });
 
