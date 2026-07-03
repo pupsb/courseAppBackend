@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose"
-mongoose.connect("mongodb+srv://iromnao60_db_user:8kdn4QFe7nRf8RF7@cluster1.71avjfq.mongodb.net/courseapp")
-    .then(() => console.log("Successfully connected to MongoDB"))
-    .catch((err) => console.error("Error connecting to MongoDB:", err));
+// mongoose.connect("mongodb+srv://iromnao60_db_user:8kdn4QFe7nRf8RF7@cluster1.71avjfq.mongodb.net/courseapp")
+//     .then(() => console.log("Successfully connected to MongoDB"))
+//     .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 const ObjectId = Schema.Types.ObjectId;
 
